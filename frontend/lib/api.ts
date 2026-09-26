@@ -1,4 +1,12 @@
-import { MediaItem, RecapRequest, RecapResponse } from './types';
+import {
+  MediaItem,
+  RecapRequest,
+  RecapResponse,
+  ABSStatusResponse,
+  ABSLibrary,
+  ABSItemSummary,
+  ABSRecapRequest,
+} from './types';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
@@ -73,4 +81,33 @@ export async function generateRecap(request: RecapRequest): Promise<RecapRespons
 
 export function getRecapAudioUrl(id: string): string {
   return `${API_BASE}/api/recap/${id}/audio`;
+}
+
+// ── Audiobookshelf ───────────────────────────────────────────
+
+export async function getABSStatus(): Promise<ABSStatusResponse> {
+  const response = await fetch(`${API_BASE}/api/abs/status`);
+  return handleResponse<ABSStatusResponse>(response);
+}
+
+export async function getABSLibraries(): Promise<ABSLibrary[]> {
+  const response = await fetch(`${API_BASE}/api/abs/libraries`);
+  return handleResponse<ABSLibrary[]>(response);
+}
+
+export async function getABSInProgress(): Promise<ABSItemSummary[]> {
+  const response = await fetch(`${API_BASE}/api/abs/in-progress`);
+  return handleResponse<ABSItemSummary[]>(response);
+}
+
+export async function generateABSRecap(
+  itemId: string,
+  body?: ABSRecapRequest,
+): Promise<RecapResponse> {
+  const response = await fetch(`${API_BASE}/api/abs/recap/${itemId}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body || {}),
+  });
+  return handleResponse<RecapResponse>(response);
 }

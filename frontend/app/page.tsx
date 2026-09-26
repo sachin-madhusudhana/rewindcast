@@ -136,38 +136,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Built for Platforms ───────────────────────────────── */}
-      <section className="section">
-        <div className="container">
-          <div className="section-heading">
-            <h2>Built for Platforms</h2>
-            <p>Integrate RewindCast into any audio experience</p>
-          </div>
-
-          <div className="platforms-grid">
-            <div className="platform-card">
-              <span className="platform-icon">🟢</span>
-              <span className="platform-name">Spotify</span>
-            </div>
-            <div className="platform-card">
-              <span className="platform-icon">🔴</span>
-              <span className="platform-name">YouTube</span>
-            </div>
-            <div className="platform-card">
-              <span className="platform-icon">🟣</span>
-              <span className="platform-name">Apple Podcasts</span>
-            </div>
-            <div className="platform-card">
-              <span className="platform-icon">🟠</span>
-              <span className="platform-name">Audible</span>
-            </div>
-            <div className="platform-card">
-              <span className="platform-icon">🔵</span>
-              <span className="platform-name">Overcast</span>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ── Footer ───────────────────────────────────────────── */}
       <footer className="footer">

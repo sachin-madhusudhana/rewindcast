@@ -11,7 +11,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import get_settings
 from app.database import init_db
-from app.routers import media, recap
+from app.routers import media, recap, audiobookshelf
 
 # ── Logging ──────────────────────────────────────────────────────────
 
@@ -73,6 +73,7 @@ app.add_middleware(
 
 app.include_router(media.router)
 app.include_router(recap.router)
+app.include_router(audiobookshelf.router)
 
 
 @app.get("/api/health", tags=["system"])

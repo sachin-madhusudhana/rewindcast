@@ -27,6 +27,8 @@ class MediaResponse(BaseModel):
     title: str
     filename: str
     duration_seconds: float | None = None
+    source_type: str = "upload"
+    external_id: str | None = None
     created_at: datetime
 
     model_config = {"from_attributes": True}
@@ -79,3 +81,38 @@ class RecapResponse(BaseModel):
     created_at: datetime
 
     model_config = {"from_attributes": True}
+
+
+# ── Audiobookshelf ────────────────────────────────────────────────────
+
+
+class ABSStatusResponse(BaseModel):
+    connected: bool
+    server_url: str | None = None
+    username: str | None = None
+    error: str | None = None
+
+
+class ABSLibrary(BaseModel):
+    id: str
+    name: str
+    media_type: str
+    item_count: int = 0
+
+
+class ABSItemSummary(BaseModel):
+    id: str
+    title: str
+    author: str | None = None
+    cover_url: str | None = None
+    duration_seconds: float
+    current_time: float = 0.0
+    progress_percent: float = 0.0
+    media_type: str = "book"
+    episode_title: str | None = None
+
+
+class ABSRecapRequest(BaseModel):
+    listened_until_seconds: float | None = None
+    episode_id: str | None = None
+    style: str = "conversational"

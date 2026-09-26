@@ -49,3 +49,13 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Audiobookshelf Volumes (Security: Prevents leaking private DB, tokens, and media)
+abs-audiobooks/
+abs-podcasts/
+abs-config/
+abs-metadata/
+
+# Python Envs
+.venv*/
+backend/.venv*/

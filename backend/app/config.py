@@ -32,6 +32,10 @@ class Settings(BaseSettings):
     # ── Database ──────────────────────────────────────────────────────
     DATABASE_URL: str = "sqlite+aiosqlite:///./rewindcast.db"
 
+    # ── Audiobookshelf ───────────────────────────────────────────────
+    AUDIOBOOKSHELF_URL: str | None = None
+    AUDIOBOOKSHELF_API_TOKEN: str | None = None
+
     model_config = {
         "env_file": str(_BACKEND_DIR.parent / ".env"),
         "env_file_encoding": "utf-8",

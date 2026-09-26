@@ -30,6 +30,8 @@ class Media(Base):
     title: Mapped[str] = mapped_column(String(512), nullable=False)
     filename: Mapped[str] = mapped_column(String(512), nullable=False)
     duration_seconds: Mapped[float] = mapped_column(Float, nullable=True)
+    source_type: Mapped[str] = mapped_column(String(50), default="upload")
+    external_id: Mapped[str | None] = mapped_column(String(256), nullable=True)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), default=_utcnow
     )

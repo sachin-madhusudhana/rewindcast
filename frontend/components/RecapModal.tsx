@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { RecapResponse } from '../lib/types';
 
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+
 interface RecapModalProps {
   recap: RecapResponse;
   onClose: () => void;
@@ -82,7 +84,7 @@ export function RecapModal({
             <div className="recap-audio-player">
               <audio
                 ref={audioRef}
-                src={recap.audio_url}
+                src={recap.audio_url ? `${API_BASE}${recap.audio_url}` : undefined}
                 onTimeUpdate={() => {
                   if (audioRef.current) {
                     setCurrentTime(audioRef.current.currentTime);

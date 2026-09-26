@@ -12,6 +12,7 @@ export function Navbar() {
         <ul className="navbar-links">
           <li><Link href="/#how-it-works">How it Works</Link></li>
           <li><Link href="/#try-it">Try It</Link></li>
+          <li><Link href="/audiobookshelf">📚 Audiobookshelf</Link></li>
           <li>
             <a
               href="https://github.com"
